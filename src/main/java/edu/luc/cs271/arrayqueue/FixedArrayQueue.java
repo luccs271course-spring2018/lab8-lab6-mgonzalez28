@@ -46,7 +46,8 @@ public class FixedArrayQueue<E> implements SimpleQueue<E> {
   public E peek() {
     // DONE
     if (!isEmpty()) {
-      return front.data;
+      E result = data[front];
+      return result;
     }
     return null;
   }
