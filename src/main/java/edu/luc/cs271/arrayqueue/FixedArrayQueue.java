@@ -81,11 +81,13 @@ public class FixedArrayQueue<E> implements SimpleQueue<E> {
   @Override
   public List<E> asList() {
     // TODO implement using an ArrayList preallocated with the right size
-    while(front != null) {
-      Queue<E> arrQueue= new ArrayList<E>(capacity);
-      list.add(front.data);
-      front = front.next;
-    }
+      List<E> list = new ArrayList<E>(capacity);
+      while(!isEmpty()) {
+        list.add(data[front]);
+        front = (front + 1) % capacity;
+        size--;
+      }
     return Arrays.asList();
   }
 }
+
