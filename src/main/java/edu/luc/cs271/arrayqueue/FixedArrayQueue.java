@@ -16,8 +16,6 @@ public class FixedArrayQueue<E> implements SimpleQueue<E> {
   private final E[] data;
 
   // DONE why do we need an explicit constructor?
-  // to know how much room we have in the queue based on the current size
-  // and to know where we start and where we end in the queue
 
   @SuppressWarnings("unchecked")
   public FixedArrayQueue(final int capacity) {
