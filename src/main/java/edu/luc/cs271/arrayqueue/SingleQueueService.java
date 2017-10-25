@@ -8,7 +8,7 @@ public class SingleQueueService {
   static final int SERVICE_TIME = 2000;
 
   public static void main(final String[] args) throws InterruptedException {
-    // TODO read successive input lines until EOF and try to add them to the queue
+    // DONE read successive input lines until EOF and try to add them to the queue
 
     // queue for customer names
     final SimpleQueue<String> queue = new FixedArrayQueue<>(5);
@@ -22,10 +22,10 @@ public class SingleQueueService {
             () -> {
               while (true) {
                 String current;
-		int remaining;
+                int remaining;
                 synchronized (lock) {
-                  current = null; // TODO try to take next name from queue
-		  remaining = 0; // TODO determine resulting size of queue
+                  current = queue.poll(); // DONE try to take next name from queue
+                  remaining = queue.size(); // DONE determine resulting size of queue
                 }
                 if (current == null) {
                   System.out.println("no one waiting");
@@ -49,7 +49,7 @@ public class SingleQueueService {
       final String name = input.nextLine();
       boolean result;
       synchronized (lock) {
-        result = false; // TODO try to add this name tothe queue
+        result = queue.offer(name); // DONE try to add this name tothe queue
       }
       if (result) {
         System.out.println(name + " has joined the queue");
